@@ -4,13 +4,16 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333333;
+    /*position: relative;*/
+    /*left: 75px;*/
+}
+
+.lefticon {
+    float: left;
     position: relative;
     left: 75px;
 }
 
-li {
-    float: left;
-}
 
 li a {
     display: block;
@@ -24,9 +27,12 @@ li a:hover {
     background-color: #111111;
 }
 
+.righticon {
+    float: right;
+}
+
 i.fa {
     position: absolute;
     font-size: 60px;
     color: lightblue;
-
 }
