@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="www/css/mystyle.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        var user_name;
+        user_name = prompt("What is your name?");
+    </script>
 </head>
 <body>
 <div>
@@ -24,13 +28,19 @@
 </div>
 <br>
 <div>
-    <p>Going to be added</p><br>
+    <h2>Welcome to my website, <span id="name"></span>!</h2>
+    <script>
+        document.getElementById("name").innerHTML = user_name;
+    </script>
+    <fieldset>
+        <legend>Upload your file</legend>
     <form method="post" enctype="multipart/form-data" action="#local.php">
         <p>Select your file you want to upload: </p>
         <input type="file" name="fileToUpload"><br>
         <br>
         <input type="submit" value="Submit">
     </form>
+    </fieldset>
 </div>
 <div>
     <p>Content</p>
