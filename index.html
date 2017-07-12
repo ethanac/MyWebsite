@@ -9,9 +9,24 @@
     <script>
         var user_name;
         user_name = prompt("What is your name?");
+        function checkAge() {
+            if (getAge() < 18) {
+                alert("Redirecting to google...");
+            }
+            else {
+                alert("Welcome to my website, " + user_name);
+            }
+        }
+
+        function getAge() {
+            var age, age_txt;
+            age_txt = prompt("Please enter your age: ");
+            age = parseInt(age_txt);
+            return age;
+        }
     </script>
 </head>
-<body>
+<body onload="checkAge()">
 <div>
     <i class="fa fa-cloud"></i>
 </div>
