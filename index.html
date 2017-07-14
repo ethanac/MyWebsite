@@ -47,6 +47,45 @@
     <script>
         document.getElementById("name").innerHTML = user_name;
     </script>
+    <p id="loca">Click here to get your location!</p>
+    <button onclick="getLocation()">Click me!</button>
+    <div id="mapholder"></div>
+    <script>
+        var x = document.getElementById("loca");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            }
+            else {
+                x.innerHTML = "Geolocation is NOT supported by this browser.";
+            }
+        }
+        
+        function showPosition(position) {
+            var latlon = position.coords.latitude + ", " + position.coords.longitude;
+            var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+                +latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
+            document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+        }
+        
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location info is currently unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERR:
+                    x.innerHTML = "An unknown error occured.";
+                    break;
+            }
+        }
+    </script>
+    <br>
     <fieldset>
         <legend>Upload your file</legend>
     <form method="post" enctype="multipart/form-data" action="#local.php">
