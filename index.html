@@ -7,23 +7,23 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
-        var user_name;
-        user_name = prompt("What is your name?");
-        function checkAge() {
-            if (getAge() < 18) {
-                alert("Redirecting to google...");
+            var user_name;
+            user_name = prompt("What is your name?");
+            function checkAge() {
+                if (getAge() < 18) {
+                    alert("Redirecting to google...");
+                }
+                else {
+                    console.log("Welcome to my website, " + user_name);
+                }
             }
-            else {
-                console.log("Welcome to my website, " + user_name);
-            }
-        }
 
-        function getAge() {
-            var age, age_txt;
-            age_txt = prompt("Please enter your age: ");
-            age = parseInt(age_txt);
-            return age;
-        }
+            function getAge() {
+                var age, age_txt;
+                age_txt = prompt("Please enter your age: ");
+                age = parseInt(age_txt);
+                return age;
+            }
     </script>
 </head>
 <body onload="checkAge()">
@@ -87,23 +87,38 @@
     </script>
     <br>
     <button onclick="register()">Register</button>
-    <div id="regholder"></div>
+    <div id="regholder" style="display: none">
+        <fieldset>
+            <legend>Register</legend>
+                <p>Please enter your password: </p>
+                <input id="pwd1" type='password'  required><br>
+                <p>Please confirm your password: </p>
+                <input id="pwd2" type='password' required><br>
+                <button onclick="verifyPasswd()">Submit</button>
+        </fieldset>
+    </div>
     <script>
         var uname = user_name;
-        var passwd;
+        var password;
         function register() {
+            document.getElementById("pwd1").value = "";
+            document.getElementById("pwd2").value = "";
             showRegBox();
         }
-
         function showRegBox() {
-            document.getElementById("regholder").innerHTML =
-                "<filedset><legend>Register</legend><form method = 'post' action='#local.php'>" +
-                "<p>Please enter your password: </p>" +
-                "<input type='password' name='passwd1'><br>" +
-                    "<p>Please confirm your password: </p>" +
-                "<input type='password' name='passwd2'><br>" +
-                "<input type='submit' value='Submit'></form>" +
-                "</filedset>";
+            document.getElementById("regholder").style.display = "block";
+        }
+        function verifyPasswd() {
+            var p1 = document.getElementById("pwd1").value;
+            var p2 = document.getElementById("pwd2").value;
+            if (p1 === p2) {
+                alert("Password is fine.");
+                password = p1;
+                document.getElementById("regholder").style.display = "none";
+            }
+            else {
+                alert("Your two enter do not match.");
+            }
         }
     </script>
     <br><br>
