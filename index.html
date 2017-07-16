@@ -47,7 +47,7 @@
     <script>
         document.getElementById("name").innerHTML = user_name;
     </script>
-    <p id="loca">Click here to get your location!</p>
+    <p id="loca">Click here to get your location!</p><br>
     <button onclick="getLocation()">Click me!</button>
     <div id="mapholder"></div>
     <script>
@@ -86,7 +86,28 @@
         }
     </script>
     <br>
-    <fieldset>
+    <button onclick="register()">Register</button>
+    <div id="regholder"></div>
+    <script>
+        var uname = user_name;
+        var passwd;
+        function register() {
+            showRegBox();
+        }
+
+        function showRegBox() {
+            document.getElementById("regholder").innerHTML =
+                "<filedset><legend>Register</legend><form method = 'post' action='#local.php'>" +
+                "<p>Please enter your password: </p>" +
+                "<input type='password' name='passwd1'><br>" +
+                    "<p>Please confirm your password: </p>" +
+                "<input type='password' name='passwd2'><br>" +
+                "<input type='submit' value='Submit'></form>" +
+                "</filedset>";
+        }
+    </script>
+    <br><br>
+    <fieldset id="inputbox">
         <legend>Upload your file</legend>
     <form method="post" enctype="multipart/form-data" action="#local.php">
         <p>Select your file you want to upload: </p>
